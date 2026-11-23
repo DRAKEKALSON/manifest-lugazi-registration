@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10131c">
+<title>Manifest Lugazi | Travel Registration</title>
+<style>
+:root{--bg:#0d1018;--panel:#171c28;--panel2:#202737;--gold:#d7b56d;--gold2:#f0d89f;--muted:#aab2c2;--white:#f7f7f5;--line:#30394b;--green:#9ed6a9}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#293044 0,#0d1018 48%);font-family:Arial,Helvetica,sans-serif;color:var(--white);min-height:100vh;padding:22px 14px 40px}
+.wrap{max-width:520px;margin:0 auto}.hero{border:1px solid #4b4435;border-radius:22px;padding:28px 22px;text-align:center;background:linear-gradient(145deg,#222a3a,#121722 70%);box-shadow:0 18px 55px #0006;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,#d7b56d12 50%,transparent 75%);pointer-events:none}
+.brand{font-size:12px;letter-spacing:4px;color:var(--gold2);font-weight:700}.hero h1{font-size:clamp(27px,7vw,39px);line-height:1.05;margin:13px 0 9px;letter-spacing:1px}.hero p{color:#c7ceda;line-height:1.55;margin:0;font-size:14px}.tag{display:inline-block;margin-top:18px;border:1px solid #796847;color:var(--gold2);border-radius:30px;padding:8px 13px;font-size:11px;letter-spacing:1.5px}
+.card{margin-top:16px;background:linear-gradient(160deg,#1a2030,#141923);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 10px 30px #0003}
+.step{display:flex;align-items:center;gap:10px;margin-bottom:15px}.num{width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:#3b3427;color:var(--gold2);font-size:13px;font-weight:700}.step h2{font-size:16px;margin:0}.hint{color:var(--muted);font-size:13px;line-height:1.5;margin:-5px 0 15px}
+.checkrow{display:flex;align-items:flex-start;gap:12px;padding:15px;border:1px solid #65563a;background:#27271f;border-radius:13px;cursor:pointer;line-height:1.45}.checkrow input{width:19px;height:19px;accent-color:var(--gold);margin:1px 0 0;flex:none}.checkrow strong{display:block}.checkrow small{color:#c0c4cb;font-size:12px}
+.hidden{display:none!important}.times{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.time{position:relative}.time input{position:absolute;opacity:0}.time span{display:block;text-align:center;padding:13px 5px;border:1px solid var(--line);border-radius:12px;background:#202737;font-size:14px;font-weight:700;cursor:pointer}.time input:checked+span{border-color:var(--gold);background:#3b3325;color:var(--gold2);box-shadow:inset 0 0 0 1px var(--gold)}
+label.field{display:block;font-size:13px;color:#d8deea;margin:14px 0 7px}input[type=text],input[type=tel],select{width:100%;padding:13px 12px;border-radius:11px;border:1px solid #3a4559;background:#0f1420;color:white;font-size:15px;outline:none}input:focus,select:focus{border-color:var(--gold)}
+.person{padding:12px;margin-top:10px;border:1px solid #30394b;border-radius:12px;background:#111722}.person-title{font-size:12px;color:var(--gold2);font-weight:700;letter-spacing:1px;margin-bottom:7px}
+.summary{background:#101722;border:1px solid #3c4659;border-radius:14px;padding:15px}.sumrow{display:flex;justify-content:space-between;gap:12px;padding:7px 0;color:#c5ccda;font-size:14px}.sumrow.total{border-top:1px solid #3a4559;margin-top:7px;padding-top:13px;color:white;font-weight:700;font-size:17px}.sumrow.total strong{color:var(--gold2);font-size:21px}
+button{width:100%;border:0;border-radius:13px;padding:16px;background:linear-gradient(110deg,#b99450,#ecd49a);color:#17130c;font-size:15px;font-weight:800;letter-spacing:.3px;cursor:pointer;margin-top:17px}button:disabled{opacity:.4;cursor:not-allowed}.fine{font-size:11px;color:#9da7b8;text-align:center;line-height:1.5;margin:13px 3px 0}.footer{text-align:center;color:#798397;font-size:11px;margin:22px 0}.success{display:none;margin-top:13px;padding:12px;border:1px solid #45634b;background:#18271d;color:#c7edce;border-radius:11px;font-size:13px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="brand">MANIFEST FELLOWSHIP • LUGAZI</div>
+  <h1>LET'S MOVE<br>TOGETHER</h1>
+  <p>Register your interest and choose your departure time for our trip to Nature Grounds.</p>
+  <div class="tag">TRAVEL REGISTRATION</div>
+</header>
+
+<form id="bookingForm">
+<section class="card">
+  <div class="step"><span class="num">1</span><h2>Would you like to move with us?</h2></div>
+  <p class="hint">Tick below to continue to the departure schedule.</p>
+  <label class="checkrow"><input id="interested" type="checkbox"><span><strong>Yes, I would like to move with Manifest Lugazi.</strong><small>Continue to select your departure time and register travellers.</small></span></label>
+</section>
+
+<div id="nextSections" class="hidden">
+<section class="card">
+  <div class="step"><span class="num">2</span><h2>Choose your departure time</h2></div>
+  <p class="hint">Select one departure time.</p>
+  <div class="times">
+    <label class="time"><input type="radio" name="departure" value="9:00 AM" required><span>9:00 AM</span></label>
+    <label class="time"><input type="radio" name="departure" value="12:00 PM"><span>12:00 PM</span></label>
+    <label class="time"><input type="radio" name="departure" value="4:00 PM"><span>4:00 PM</span></label>
+  </div>
+</section>
+
+<section class="card">
+  <div class="step"><span class="num">3</span><h2>Traveller details</h2></div>
+  <p class="hint">Register yourself or a group. Add each traveller's name below.</p>
+  <label class="field" for="count">Number of travellers</label>
+  <select id="count">
+    <option value="1">1 traveller</option><option value="2">2 travellers</option><option value="3">3 travellers</option><option value="4">4 travellers</option><option value="5">5 travellers</option><option value="6">6 travellers</option><option value="7">7 travellers</option><option value="8">8 travellers</option><option value="9">9 travellers</option><option value="10">10 travellers</option><option value="11">11 travellers</option><option value="12">12 travellers</option><option value="13">13 travellers</option><option value="14">14 travellers</option><option value="15">15 travellers</option><option value="16">16 travellers</option><option value="17">17 travellers</option><option value="18">18 travellers</option><option value="19">19 travellers</option><option value="20">20 travellers</option>
+  </select>
+  <div id="people"></div>
+  <label class="field" for="contactName">Contact person's name</label>
+  <input id="contactName" type="text" placeholder="Your full name" required>
+  <label class="field" for="contactPhone">Contact person's phone number</label>
+  <input id="contactPhone" type="tel" placeholder="e.g. 07XXXXXXXX" required>
+</section>
+
+<section class="card">
+  <div class="step"><span class="num">4</span><h2>Transport summary</h2></div>
+  <div class="summary">
+    <div class="sumrow"><span>Destination</span><strong>Nature Grounds</strong></div>
+    <div class="sumrow"><span>Departure</span><strong id="sumTime">Not selected</strong></div>
+    <div class="sumrow"><span>Travellers</span><strong id="sumCount">1</strong></div>
+    <div class="sumrow"><span>Transport per person</span><strong>UGX 15,000</strong></div>
+    <div class="sumrow total"><span>Total transport amount</span><strong id="total">UGX 15,000</strong></div>
+  </div>
+  <button id="submitBtn" type="submit">SEND REGISTRATION ON WHATSAPP</button>
+  <p class="fine">Your WhatsApp will open with the registration message ready. Please press <b>Send</b> in WhatsApp to complete your registration.</p>
+  <div id="success" class="success">WhatsApp should now be opening. Please review the message and press Send.</div>
+</section>
+</div>
+</form>
+<div class="footer">MANIFEST LUGAZI • LET'S MOVE TOGETHER</div>
+</div>
+<script>
+const interested=document.getElementById('interested');
+const next=document.getElementById('nextSections');
+const count=document.getElementById('count');
+const people=document.getElementById('people');
+const total=document.getElementById('total');
+const sumCount=document.getElementById('sumCount');
+const sumTime=document.getElementById('sumTime');
+const money=n=>'UGX '+(n*15000).toLocaleString('en-US');
+function renderPeople(){
+  const n=Number(count.value); people.innerHTML='';
+  for(let i=1;i<=n;i++){
+    const wrap=document.createElement('div');wrap.className='person';
+    wrap.innerHTML='<div class="person-title">TRAVELLER '+i+'</div><input type="text" name="traveller" placeholder="Traveller '+i+' full name" required aria-label="Traveller '+i+' full name">';
+    people.appendChild(wrap);
+  }
+  sumCount.textContent=n;total.textContent=money(n);
+}
+interested.addEventListener('change',()=>{next.classList.toggle('hidden',!interested.checked);if(interested.checked)renderPeople();});
+count.addEventListener('change',renderPeople);
+document.querySelectorAll('input[name="departure"]').forEach(r=>r.addEventListener('change',()=>sumTime.textContent=r.value));
+document.getElementById('bookingForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ if(!interested.checked){alert('Please tick that you would like to move with Manifest Lugazi.');return;}
+ const departure=document.querySelector('input[name="departure"]:checked');
+ if(!departure){alert('Please select a departure time.');return;}
+ const names=[...document.querySelectorAll('input[name="traveller"]')].map((x,i)=>(i+1)+'. '+x.value.trim());
+ if(names.some(x=>!x.split('. ')[1])){alert('Please enter the name of every traveller.');return;}
+ const contact=document.getElementById('contactName').value.trim();
+ const phone=document.getElementById('contactPhone').value.trim();
+ if(!contact||!phone){alert('Please enter the contact person's name and phone number.');return;}
+ const n=Number(count.value);
+ const message=[
+ 'MANIFEST LUGAZI - TRAVEL REGISTRATION',
+ '',
+ 'I would like to travel with Manifest Lugazi.',
+ 'Contact person: '+contact,
+ 'Phone number: '+phone,
+ 'Number of travellers: '+n,
+ 'Travellers:',
+ ...names,
+ 'Departure time: '+departure.value,
+ 'Destination: Nature Grounds',
+ 'Transport fee: UGX 15,000 per person',
+ 'TOTAL: '+money(n),
+ '',
+ 'Thank you.'
+ ].join('\n');
+ document.getElementById('success').style.display='block';
+ const url='https://wa.me/256747189641?text='+encodeURIComponent(message);
+ window.open(url,'_blank');
+});
+</script>
+</body>
+</html>
